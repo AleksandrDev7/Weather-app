@@ -5,9 +5,45 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  background-color: #C0E0F6;
 }
 
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
+}
+
+.wrap {
+  max-width: 1240px;
+  margin: 0 auto;
+}
+
+h1 {
+  font-size: 25px;
+  color: #0096DE;
+}
+
+h2 {
+  font-size: 20px;
+}
+
+.title-name_city {
+  margin: 40px 0 0 0;
+}
+
+.content_error {
+  color: #a41616;
+  margin: 0 auto;
+}
+
+@media screen and (max-width: 1240px){
+  .wrap {
+    padding: 0 40px;
+  }
+}
+
+@media screen and (max-width: 480px){
+  .wrap {
+    padding: 0 20px;
+  }
 }

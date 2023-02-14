@@ -1,0 +1,58 @@
+.container-weather {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  width: 100%;
+  margin-top: 10%;
+  min-height: 200px;
+  position: relative;
+
+  .search-form {
+    margin-top: 50px;
+
+    &__input {
+      width: 150px;
+      padding: 15px 15px 15px 45px;
+      border-radius: 10px 0 0 10px;
+      border: 1px solid #afabab;
+      text-transform: capitalize;
+      outline: none;
+      background-image: url("../../../../weather-app/public/zoom_icon.png");
+      background-position: 10px 50%;
+      background-size: 20px;
+      background-repeat: no-repeat;
+
+      &::placeholder {
+        text-transform: none;
+      }
+    }
+
+    &__submit {
+      padding: 15px;
+      border-radius: 0 10px 10px 0;
+      border: 1px solid #afabab;
+      border-left: transparent;
+      background-color: #eee;
+    }
+  }
+
+  .weather-content {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    width: 100%;
+    margin-top: 80px;
+  }
+}
+
+@media screen and (max-width: 550px){
+  .container-weather {
+    .weather-content {
+      flex-direction: column;
+      justify-content: center;
+    }
+  }
+}
