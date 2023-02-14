@@ -1,6 +1,5 @@
 import React from "react";
 
-
 function CityName(props) {
     if (!props.warn) {
         return null;
