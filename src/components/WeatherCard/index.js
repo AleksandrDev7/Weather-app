@@ -1,28 +1,27 @@
+import React from "react";
 import './style.scss';
+import WeatherItem from "./weather-item";
 
-function WeatherCard(props) {
-        const ms = props.item.dt * 1000;
-        const weekDayName = new Date(ms).toLocaleDateString('ru', {weekday: 'long'});
-        const imgURL = "owf owf-"+ props.item.weather[0].id +" owf-4x owf-pull-left owf-border";
-        const fahrenheit = (parseInt(props.item.main.temp) - 273.15) * (9/5) + 32;
-        const celsius = Math.trunc((fahrenheit - 32) * (5/9));
+class WeatherList extends React.Component {
+        WeatherArray = () => {
+            return (
+                this.props.items.map((item, index) =>
+                    <WeatherItem item={item} key={index}/>)
+            );
+        }
 
+    render() {
         return (
-            <div className="card">
-                <div className="card-img">
-                    <i className={imgURL}></i>
-                </div>
-                <div className="card-content">
-                    <div className="card-content-title">
-                        <span> {weekDayName[0].toUpperCase() + weekDayName.slice(1)} </span>
-                    </div>
-                    <div className="card-content-text">
-                        <p className="text__cloud"> {props.item.weather[0].description} </p>
-                        <p className="text__temp"> {celsius} </p>
-                    </div>
+            <div className="weather-list">
+                <h2 className="weather-list__subtitle">
+                    Прогноз погоды в городе {this.props.city}
+                </h2>
+                <div>
+                    {this.WeatherArray()}
                 </div>
             </div>
         )
+    }
 }
 
-export default WeatherCard;
+export default WeatherList;
