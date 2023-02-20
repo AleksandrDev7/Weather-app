@@ -5,7 +5,7 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  background-color: #C0E0F6;
+  background-color: #eee;
 }
 
 code {
@@ -23,6 +23,9 @@ h1 {
   color: #0096DE;
 }
 
+h1 span {
+  color: black;
+}
 
 .content_error {
   color: #a41616;

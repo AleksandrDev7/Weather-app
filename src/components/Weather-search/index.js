@@ -1,7 +1,7 @@
 import React from "react";
-import WeatherList from '../WeatherCard';
+import WeatherList from '../Weather-list';
 import { withRouter } from "react-router-dom";
-import ErrorPage from "../ErrorPage";
+import ErrorPage from '../ErrorPage';
 import '../../../../Weather-app/src/components/Weather-search/style.scss';
 
 class WeatherSearch extends React.Component {
@@ -12,17 +12,16 @@ class WeatherSearch extends React.Component {
             isLoaded: false,
             items: [],
             city: '',
-            value: this.props.location.pathname.slice(1) ? this.props.location.pathname.slice(1) : "",
+            value: this.props.location.pathname.slice(1) ? this.props.location.pathname.slice(1) : '',
             showNameCity: false,
             appId: '6c62c9b2abeb7d9418096dc3b3927236',
             disabled: true,
-            required: true
+            required: true,
         };
 
         this.handleSubmit = this.handleSubmit.bind(this);
         this.handleChange = this.handleChange.bind(this);
     }
-y
 
     refreshFetch() {
         const cityName = this.state.value;
@@ -38,20 +37,15 @@ y
                         city: data.city,
                         error: false
                     })
-                }  else return;
+                } else throw this.state.error;
             })
             .catch(error => {
                 this.setState({
-                    error
+                    error: true
                 });
+
                 throw new Error(`Error: ${error}`);
             })
-    }
-
-    componentDidMount() {
-        if (this.props.location.pathname.slice(1)) {
-            this.refreshFetch();
-        }
     }
 
     inputLock() {
@@ -79,6 +73,7 @@ y
         this.inputLock();
     }
 
+
     handleSubmit(event) {
         const text = (this.state.value)[0].toUpperCase() + (this.state.value).slice(1);
         event.preventDefault();
@@ -89,6 +84,10 @@ y
             text,
         });
         this.props.history.push(`/${(this.state.value).toLocaleLowerCase()}`);
+
+        if(this.props.location.pathname.slice(1)) {
+            this.refreshFetch();
+        }
     }
 
     render() {
@@ -96,13 +95,17 @@ y
             <section>
                 <div className="wrap">
                     <div className="weather">
-                        <h1>Прогноз погоды на 5 дней.</h1>
+                        <h1>Прогноз погоды - Gps<span>meteo</span></h1>
                         <form className="weather-form" onSubmit={this.handleSubmit}>
                             <input className="weather-form__input" type="text" value={this.state.value}
-                                   onChange={this.handleChange} placeholder="Название города" required={this.state.required}/>
+                                   onChange={this.handleChange} placeholder="Введите название города" required={this.state.required}/>
                             <button className="weather-form__submit" type="submit" disabled={this.state.disabled}>Поиск</button>
                         </form>
-                        { this.state.error ? <ErrorPage /> : <WeatherList items={this.state.items} city={this.state.value}/> }
+
+                        {this.state.error && (<ErrorPage />)}
+                        {!this.state.error && this.state.showNameCity && (<WeatherList items={this.state.items}
+                                                                                               city={this.state.text}/>)}
+
                     </div>
                 </div>
             </section>
