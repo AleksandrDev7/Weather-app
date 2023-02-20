@@ -10,6 +10,7 @@
     text-align: left;
     font-size: 20px;
     margin: 40px 0 5px 0;
+    color: #fff;
   }
 
   &-items {
@@ -18,8 +19,8 @@
     justify-content: space-between;
     flex-wrap: wrap;
     padding: 40px;
-    background-color: #C0E0F6;
-    border: 1px solid #4296c7;
+    background: linear-gradient(to left top, #54BBC4, #4EBEC2, #5BC7C9 100%);
+    border: 1px solid #61cdd2;
     border-radius: 10px;
   }
 }

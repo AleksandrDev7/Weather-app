@@ -12,28 +12,32 @@
     margin-top: 50px;
 
     &__input {
-      width: 150px;
+      width: 160px;
       padding: 15px 15px 15px 45px;
       border-radius: 10px 0 0 10px;
-      border: 1px solid #afabab;
+      border: 1px solid #3AC6BE;
       text-transform: capitalize;
       outline: none;
       background-image: url("../../../../weather-app/public/zoom_icon.png");
       background-position: 10px 50%;
       background-size: 20px;
       background-repeat: no-repeat;
+      background-color: #097974FF;
+      color: #fff;
 
       &::placeholder {
         text-transform: none;
+        color: #fff;
       }
     }
 
     &__submit {
       padding: 15px;
       border-radius: 0 10px 10px 0;
-      border: 1px solid #afabab;
+      border: 1px solid #3AC6BE;
       border-left: transparent;
-      background-color: #C0E0F6;
+      background-color: #3AC6BE;
+      color: #fff;
     }
   }
 

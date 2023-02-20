@@ -5,7 +5,7 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  background-color: #eee;
+  background: linear-gradient(to right, #46A0B1 0%, #32A0B2 0%, #89D0D9 100%);
 }
 
 code {
@@ -20,11 +20,11 @@ code {
 
 h1 {
   font-size: 25px;
-  color: #0096DE;
+  color: #fff;
 }
 
 h1 span {
-  color: black;
+  color: #61fbf2;
 }
 
 .content_error {

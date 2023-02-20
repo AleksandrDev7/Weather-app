@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import WeatherList from '../Weather-list';
 import { withRouter } from "react-router-dom";
 import ErrorPage from '../ErrorPage';
@@ -85,8 +85,12 @@ class WeatherSearch extends React.Component {
         });
         this.props.history.push(`/${(this.state.value).toLocaleLowerCase()}`);
 
-        if(this.props.location.pathname.slice(1)) {
-            this.refreshFetch();
+        if (this.props.location.pathname === this.state.value) {
+            this.setState({
+                showNameCity: true,
+            })
+
+
         }
     }
 
@@ -96,7 +100,7 @@ class WeatherSearch extends React.Component {
                 <div className="wrap">
                     <div className="weather">
                         <h1>Прогноз погоды - Gps<span>meteo</span></h1>
-                        <form className="weather-form" onSubmit={this.handleSubmit}>
+                        <form className="weather-form" onSubmit={this.handleSubmit} key={this.props.location.key}>
                             <input className="weather-form__input" type="text" value={this.state.value}
                                    onChange={this.handleChange} placeholder="Введите название города" required={this.state.required}/>
                             <button className="weather-form__submit" type="submit" disabled={this.state.disabled}>Поиск</button>
