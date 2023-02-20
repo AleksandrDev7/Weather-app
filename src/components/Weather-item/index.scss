@@ -1,0 +1,36 @@
+.item {
+  display: flex;
+  flex-direction: row;
+  text-align: left;
+
+  &-content {
+    &__dayName {
+        font-size: 18px;
+        font-weight: 700;
+        color: #000;
+    }
+
+    &__conditions {
+      .conditions__cloud,
+      .conditions__temp {
+        margin: 0;
+      }
+
+      .conditions__cloud {
+        width: 120px;
+      }
+
+      .conditions__temp {
+        font-size: 15px;
+        font-weight: 800;
+      }
+    }
+  }
+}
+
+
+@media screen and (max-width: 1240px){
+  .item {
+    min-width: 50%;
+  }
+}
