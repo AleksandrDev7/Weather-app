@@ -4,6 +4,17 @@
   justify-content: center;
   text-align: center;
   width: 150px;
+  margin-top: 10px;
+  border-left: 1px solid rgba(255, 255, 255, 0.7);
+  border-right: 1px solid rgba(255, 255, 255 ,0.7);
+
+  &:first-child {
+    border-left: 2px solid rgba(255, 255, 255, 0.7);
+  }
+
+  &:last-child {
+    border-right: 2px solid rgba(255, 255, 255 ,0.7);
+  }
 
 
   &-content {
@@ -15,6 +26,10 @@
         font-size: 18px;
         font-weight: 700;
         color: #fff;
+    }
+
+    &-img {
+      margin: 10px 0;
     }
 
     &__conditions {
@@ -41,9 +56,22 @@
   }
 }
 
-
-@media screen and (max-width: 1240px){
+@media screen and (max-width: 922px){
   .item {
-    min-width: 50%;
+    border-left: none;
+    border-right: none;
+    border-top: 2px solid rgba(255, 255, 255, 0.7);
+    width: 100%;
+    padding: 10px 0;
+    margin-top: 0;
+
+    &:first-child {
+      border-left: none;
+      border-top: none;
+    }
+
+    &:last-child {
+      border-right: none;
+    }
   }
 }

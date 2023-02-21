@@ -5,7 +5,7 @@ class Index extends React.Component {
     render() {
         const ms = this.props.item.dt * 1000;
         const weekDayName = new Date(ms).toLocaleDateString('ru', {weekday: 'long'});
-        const imgURL = "owf owf-"+ this.props.item.weather[0].id +" owf-4x owf-pull-left";
+        const imgURL = "owf owf-"+ this.props.item.weather[0].id +" owf-4x";
         const fahrenheit = (parseInt(this.props.item.main.temp) - 273.15) * (9/5) + 32;
         const celsius = Math.trunc((fahrenheit - 32) * (5/9));
 

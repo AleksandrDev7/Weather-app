@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React from "react";
 import WeatherList from '../Weather-list';
 import { withRouter } from "react-router-dom";
 import ErrorPage from '../ErrorPage';
@@ -23,6 +23,19 @@ class WeatherSearch extends React.Component {
         this.handleChange = this.handleChange.bind(this);
     }
 
+    componentDidMount() {
+        if (this.props.location.pathname.slice(1)) {
+            this.refreshFetch();
+            this.setState({
+                disabled: false,
+                required: false,
+                showNameCity: true,
+                city: this.props.location.pathname.slice(1)
+            });
+        }
+    }
+
+
     refreshFetch() {
         const cityName = this.state.value;
         const WeatherApiLink = `https://api.openweathermap.org/data/2.5/forecast?q=${cityName}&lang=ru&appid=${this.state.appId}`;
@@ -35,7 +48,8 @@ class WeatherSearch extends React.Component {
                     this.setState({
                         items: dailyData,
                         city: data.city,
-                        error: false
+                        error: false,
+                        text: this.state.value[0].toUpperCase() + this.state.value.slice(1)
                     })
                 } else throw this.state.error;
             })
@@ -49,21 +63,13 @@ class WeatherSearch extends React.Component {
     }
 
     inputLock() {
-        if (this.state.value === this.state.value.replace(/[^а-яёА-ЯЁ\s- ]/g,"")) {
+        if (this.state.value === this.state.value.replace(/[^а-яёА-ЯЁ\s- ]/g)) {
             this.setState({
                 disabled: false,
                 required: false
             });
         } else this.setState({
             disabled: true,
-            required: true
-        });
-
-        if (this.state.value === '') {
-            this.setState({
-                required: false
-            });
-        } else this.setState({
             required: true
         });
     }
@@ -75,7 +81,7 @@ class WeatherSearch extends React.Component {
 
 
     handleSubmit(event) {
-        const text = (this.state.value)[0].toUpperCase() + (this.state.value).slice(1);
+        const text = this.state.value[0].toUpperCase() + this.state.value.slice(1);
         event.preventDefault();
         this.refreshFetch();
         this.inputLock();
@@ -85,14 +91,8 @@ class WeatherSearch extends React.Component {
         });
         this.props.history.push(`/${(this.state.value).toLocaleLowerCase()}`);
 
-        if (this.props.location.pathname === this.state.value) {
-            this.setState({
-                showNameCity: true,
-            })
-
-
-        }
     }
+
 
     render() {
         return (
@@ -108,7 +108,8 @@ class WeatherSearch extends React.Component {
 
                         {this.state.error && (<ErrorPage />)}
                         {!this.state.error && this.state.showNameCity && (<WeatherList items={this.state.items}
-                                                                                               city={this.state.text}/>)}
+                                                                                               city={this.state.text} />) }
+
 
                     </div>
                 </div>
