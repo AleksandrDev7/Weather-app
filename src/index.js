@@ -1,13 +1,16 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
 import './index.css';
-import WeatherSearch from './components/Weather-search/index';
+import WeatherSearch from "./components/Weather-search";
 import { BrowserRouter } from 'react-router-dom';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
-root.render(
-    <BrowserRouter>
-        <WeatherSearch />
-    </BrowserRouter>
-);
 
+
+root.render(
+    <React.StrictMode>
+        <BrowserRouter>
+            <WeatherSearch />
+        </BrowserRouter>
+    </React.StrictMode>
+);

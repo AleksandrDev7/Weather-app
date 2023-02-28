@@ -1,4 +1,4 @@
-.container-weather {
+.weather {
   display: flex;
   align-items: center;
   justify-content: center;
@@ -8,32 +8,40 @@
   min-height: 200px;
   position: relative;
 
-  .search-form {
+  .weather-form {
     margin-top: 50px;
 
     &__input {
-      width: 150px;
+      width: 160px;
       padding: 15px 15px 15px 45px;
       border-radius: 10px 0 0 10px;
-      border: 1px solid #afabab;
+      border: 1px solid rgba(255, 255, 255, 0.2);
       text-transform: capitalize;
       outline: none;
       background-image: url("../../../../weather-app/public/zoom_icon.png");
       background-position: 10px 50%;
       background-size: 20px;
       background-repeat: no-repeat;
+      background-color: rgba(255, 255, 255, 0.2);
+      color: #fff;
 
       &::placeholder {
         text-transform: none;
+        color: #fff;
       }
     }
 
     &__submit {
       padding: 15px;
       border-radius: 0 10px 10px 0;
-      border: 1px solid #afabab;
+      border: 1px solid rgba(255, 255, 255, 0.2);
       border-left: transparent;
-      background-color: #eee;
+      background-color: rgba(255, 255, 255, 0.2);
+      color: #fff;
+
+      &:enabled {
+          cursor: pointer;
+      }
     }
   }
 
@@ -48,11 +56,10 @@
   }
 }
 
-@media screen and (max-width: 550px){
+@media screen and (max-width: 920px){
   .container-weather {
     .weather-content {
-      flex-direction: column;
-      justify-content: center;
+      margin: 0 auto;
     }
   }
 }
