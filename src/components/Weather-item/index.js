@@ -1,7 +1,7 @@
 import React from "react";
 import './index.scss';
 
-class Index extends React.Component {
+class WeatherItem extends React.Component {
     render() {
         const ms = this.props.item.dt * 1000;
         const weekDayName = new Date(ms).toLocaleDateString('ru', {weekday: 'long'});
@@ -29,4 +29,4 @@ class Index extends React.Component {
     }
 }
 
-export default Index;
+export default WeatherItem;
