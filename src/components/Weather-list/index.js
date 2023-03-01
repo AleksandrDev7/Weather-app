@@ -1,26 +1,25 @@
 import React from "react";
 import './style.scss';
-import Index from "../Weather-item";
+import WeatherItem from "../Weather-item";
 
 class WeatherList extends React.Component {
 
-    WeatherArray = () => {
-            return (
-                this.props.items.map((item, index) =>
-                    <Index item={item} key={index}/>)
-
-            );
-
-        }
+    WeatherItem = () => {
+        return (
+            this.props.items.map((item, index) =>
+                <WeatherItem item={item} key={index}/>
+            )
+        );
+    }
 
     render() {
         return (
             <div className="weather-list">
                 <h2 className="weather-list__subtitle">
-                    Прогноз погоды в городе {this.props.city}
+                    Прогноз погоды в городе {this.props.cityName}
                 </h2>
                 <div className="weather-list-items">
-                    {this.WeatherArray()}
+                    {this.WeatherItem()}
                 </div>
             </div>
         )

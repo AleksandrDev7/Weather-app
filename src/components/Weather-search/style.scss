@@ -8,7 +8,7 @@
   min-height: 200px;
   position: relative;
 
-  .weather-form {
+  &-form {
     margin-top: 50px;
 
     &__input {
@@ -44,22 +44,10 @@
       }
     }
   }
-
-  .weather-content {
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    align-items: center;
-    flex-wrap: wrap;
-    width: 100%;
-    margin-top: 80px;
-  }
 }
 
-@media screen and (max-width: 920px){
-  .container-weather {
-    .weather-content {
-      margin: 0 auto;
-    }
+@media screen and (max-width: 350px){
+  .weather-form__input {
+    width: 125px;
   }
 }

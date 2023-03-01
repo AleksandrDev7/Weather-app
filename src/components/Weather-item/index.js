@@ -1,7 +1,7 @@
 import React from "react";
 import './index.scss';
 
-class Index extends React.Component {
+class WeatherItem extends React.Component {
     render() {
         const ms = this.props.item.dt * 1000;
         const weekDayName = new Date(ms).toLocaleDateString('ru', {weekday: 'long'});
@@ -10,16 +10,16 @@ class Index extends React.Component {
         const celsius = Math.trunc((fahrenheit - 32) * (5/9));
 
         return (
-        <div className="item">
+        <div className="weather-item">
 
-            <div className="item-content">
-                <div className="item-content__dayName">
+            <div className="weather-item-content">
+                <div className="weather-item-content__dayName">
                     <span> {weekDayName[0].toUpperCase() + weekDayName.slice(1)} </span>
                 </div>
-                <div className="item-content-img">
+                <div className="weather-item-content-img">
                     <i className={imgURL}></i>
                 </div>
-                <div className="item-content__conditions">
+                <div className="weather-item-content__conditions">
                     <p className="conditions__cloud"> {this.props.item.weather[0].description} </p>
                     <p className="conditions__temp"> {celsius} </p>
                 </div>
@@ -29,4 +29,4 @@ class Index extends React.Component {
     }
 }
 
-export default Index;
+export default WeatherItem;
