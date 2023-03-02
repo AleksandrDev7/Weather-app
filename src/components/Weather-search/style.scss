@@ -8,7 +8,7 @@
   min-height: 200px;
   position: relative;
 
-  .weather-form {
+  &-form {
     margin-top: 50px;
 
     &__input {
@@ -18,7 +18,7 @@
       border: 1px solid rgba(255, 255, 255, 0.2);
       text-transform: capitalize;
       outline: none;
-      background-image: url("../../../../weather-app/public/zoom_icon.png");
+      background-image: url("../../../public/zoom_icon.png");
       background-position: 10px 50%;
       background-size: 20px;
       background-repeat: no-repeat;
@@ -44,22 +44,10 @@
       }
     }
   }
-
-  .weather-content {
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    align-items: center;
-    flex-wrap: wrap;
-    width: 100%;
-    margin-top: 80px;
-  }
 }
 
-@media screen and (max-width: 920px){
-  .container-weather {
-    .weather-content {
-      margin: 0 auto;
-    }
+@media screen and (max-width: 350px){
+  .weather-form__input {
+    width: 125px;
   }
 }

@@ -1,4 +1,4 @@
-.item {
+.weather-item {
   display: flex;
   flex-direction: row;
   justify-content: center;
@@ -57,7 +57,7 @@
 }
 
 @media screen and (max-width: 922px){
-  .item {
+  .weather-item {
     border-left: none;
     border-right: none;
     border-top: 2px solid rgba(255, 255, 255, 0.7);

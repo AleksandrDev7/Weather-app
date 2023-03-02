@@ -6,7 +6,8 @@ body {
   /*background: linear-gradient(to right, #46A0B1 0%, #32A0B2 0%, #89D0D9 100%);*/
   background: url("../public/walpaper.jpg") no-repeat;
   background-size: cover;
-  height: 100%
+  height: auto;
+  min-height: 100vh;
 }
 
 code {

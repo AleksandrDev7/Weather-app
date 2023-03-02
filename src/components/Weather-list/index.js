@@ -1,6 +1,6 @@
 import React from "react";
 import './index.scss';
-import Index from "../Weather-item";
+import WeatherItem from "../Weather-item";
 
 function WeatherList(props) {
 
@@ -11,7 +11,7 @@ function WeatherList(props) {
                 </h2>
                 <div className="weather-list-items">
                     {props.items.map((item, index) =>
-                        <Index item={item} key={index}/>)}
+                        <WeatherItem item={item} key={index}/>)}
                 </div>
             </div>
         )
