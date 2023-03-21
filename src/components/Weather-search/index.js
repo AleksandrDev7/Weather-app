@@ -42,22 +42,23 @@ class WeatherSearch extends React.Component {
                         error: false,
                     })
                 } else {
-                    throw this.state.error;
+                    throw data.message;
                 }
+
             })
             .catch(error => {
+
                 this.setState({
                     error: true
                 });
 
-                throw new Error(`Error: ${error}`);
+                throw new Error(error);
             })
     }
 
     handleChange = (event) => {
         this.setState({value: event.target.value});
     }
-
 
     handleSubmit = (event) => {
         event.preventDefault();
@@ -73,7 +74,9 @@ class WeatherSearch extends React.Component {
                 <div className="wrap">
                     <div className="weather">
                         <h1>Прогноз погоды - Gps<span>meteo</span></h1>
-                        <form className="weather-form" onSubmit={this.handleSubmit} key={this.props.location.key}>
+                        <form className="weather-form"
+                              onSubmit={this.handleSubmit}
+                              key={this.props.location.key}>
                             <input
                                 required
                                 className="weather-form__input"
@@ -82,10 +85,16 @@ class WeatherSearch extends React.Component {
                                 onChange={this.handleChange}
                                 placeholder="Введите название города"
                                 />
-                            <button className="weather-form__submit" type="submit" disabled={!this.state.value}>Поиск</button>
+                            <button className="weather-form__submit"
+                                    type="submit"
+                                    disabled={!this.state.value}
+                            >
+                                Поиск
+                            </button>
                         </form>
 
                         {this.state.error && (<ErrorPage />)}
+
                         {
                             !this.state.error && this.state.city &&
                             (<WeatherList items={this.state.items} cityName={this.state.city.name} />)
