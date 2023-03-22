@@ -18,46 +18,41 @@ function WeatherSearch() {
         changeValue(e.target.value);
     }
 
-        const fetchData = async () => {
-        if (!value) {
-            return;
-        }
+        useEffect(() => {
+            const api = `https://api.openweathermap.org/data/2.5/forecast?q=${value}&lang=ru&appid=${APP_ID}`;
 
-        const api = `https://api.openweathermap.org/data/2.5/forecast?q=${value}&lang=ru&appid=${APP_ID}`;
+            const fetchData = async () => {
 
-             await fetch(api)
-                 .then(res => res.json())
-                 .then(data => {
-                     if (data.cod.includes("200")) {
-                         const dailyData = data.list.filter(reading => reading.dt_txt.includes("12:00:00"));
+                if (!value) {
+                    return;
+                }
 
-                             setItems(dailyData);
-                             setCity(data.city);
-                             setError(false);
+                try {
+                    const response = await fetch(api);
+                    const data = await response.json();
+                    if (data.cod.includes("200")) {
+                        const dailyData = data.list.filter(reading => reading.dt_txt.includes("12:00:00"));
+                        setItems(dailyData);
+                        setCity(data.city);
+                        setError(false);
+                    } else {
+                        throw data.message;
+                    }
 
-                     } else {
-                         throw error;
-                     }
-                 })
-                 .catch(error => {
+                } catch (error) {
 
-                     setError(true);
+                        setError(true);
 
-                     throw new Error(`Error: ${error}`);
-                 })
-                 .catch(e => {
-                     console.log(e);
-                 });
-        }
+                        throw new Error(error);
+                    }
+            };
 
-    useEffect(() => {
-        fetchData();
-    },[location.pathname] );
+            fetchData();
+        }, [location.pathname]);
 
     const handleSubmit = (e) => {
-        e.preventDefault();
 
-        fetchData();
+        e.preventDefault();
 
         history.push(`/${(value).toLocaleLowerCase()}`);
     }
@@ -67,7 +62,9 @@ function WeatherSearch() {
             <div className="wrap">
                 <div className="weather">
                     <h1>Прогноз погоды - Gps<span>meteo</span></h1>
-                    <form className="weather-form" onSubmit={handleSubmit} key={location.key}>
+                    <form className="weather-form"
+                          onSubmit={handleSubmit}
+                          key={location.key}>
                         <input className="weather-form__input"
                                type="text" value={value}
                                onChange={handleChangeValue}
@@ -83,6 +80,7 @@ function WeatherSearch() {
                     </form>
 
                     {error && (<ErrorPage />)}
+
                     {
                         !error && city &&
                         (<WeatherList items={items} city={city.name} />)
